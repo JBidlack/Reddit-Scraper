@@ -1,7 +1,7 @@
 #imports needed. The .env file will be .gitignored for security
-from dotenv.main import load_dotenv;
-import praw;
-import os;
+from dotenv.main import load_dotenv
+import praw
+import os
 import pandas as pd
 import datetime
 import time
@@ -22,7 +22,7 @@ except Exception as e:
     Reddit = None
 
 if Reddit:
-    source = Reddit.subreddit('antiwork').top(limit = 10000)
+    source = Reddit.subreddit('antiwork').new(limit = 10000)
     posts = {}
     keywords = {"bullsht", "meaningless", "aimless", "purposeless", "futile", "senseless work"}
 
