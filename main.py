@@ -1,5 +1,5 @@
 """Reddit Scraper"""
-#imports needed. The .env file will be .gitignored for security
+# imports needed. The .env file will be .gitignored for security
 import os
 import datetime
 import time
@@ -9,7 +9,7 @@ from dotenv.main import load_dotenv
 
 load_dotenv()
 
-#putting the connection info into a try/catch block in case of connection error
+# putting the connection info into a try/catch block in case of connection error
 try:
     REDDIT = praw.Reddit(
         client_id = os.environ['client'],
@@ -34,7 +34,7 @@ if REDDIT:
         'Posted': []
         }
     COUNT = 0
-#use a nested for loop to check each post title for the keywords
+# use a nested for loop to check each post title for the keywords
     for post in source:
         COUNT+=1
         print(COUNT)
