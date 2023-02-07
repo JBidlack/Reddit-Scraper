@@ -9,12 +9,10 @@ import csv
 from dotenv.main import load_dotenv
 
 load_dotenv()
-keywords = []
 
-with open('keywords.csv') as kword:
-    reader = csv.reader(kword)
-    for word in reader:
-        keywords.append(word)
+
+keywords = open('keywords.csv', 'r').readlines()
+
 
 # putting the connection info into a try/catch block in case of connection error
 try:
@@ -52,7 +50,6 @@ if REDDIT:
                 data['Title'].append(post.title)
                 data['Body'].append(post.selftext)
                 data['Posted'].append(datetime.datetime.fromtimestamp(post.created_utc))
-                print(len(posts))
             if len(posts) == 10:
                 break
         if len(posts) == 10:
