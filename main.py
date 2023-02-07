@@ -5,9 +5,16 @@ import datetime
 import time
 import pandas as pd
 import praw
+import csv
 from dotenv.main import load_dotenv
 
 load_dotenv()
+keywords = []
+
+with open('keywords.csv') as kword:
+    reader = csv.reader(kword)
+    for word in reader:
+        keywords.append(word)
 
 # putting the connection info into a try/catch block in case of connection error
 try:
@@ -25,7 +32,7 @@ except ConnectionError() as e:
 if REDDIT:
     source = REDDIT.subreddit('antiwork').new(limit = 10000)
     posts = {}
-    keywords = {"bullsht", "meaningless", "aimless", "purposeless", "futile", "senseless work"}
+    
 
 # create a data structure for each post returned
     data = {
@@ -66,3 +73,5 @@ if REDDIT:
     print("Done")
 else:
     print("Connection problems. Please try again later")
+
+
