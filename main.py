@@ -5,7 +5,6 @@ import datetime
 import time
 import pandas as pd
 import praw
-import csv
 from dotenv.main import load_dotenv
 
 load_dotenv()
