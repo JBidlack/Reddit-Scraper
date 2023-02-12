@@ -1,4 +1,4 @@
-"""Reddit Scraper"""
+"""Reddit Scraper created by John Bidlack"""
 # imports needed. The .env file will be .gitignored for security
 import os
 import datetime
@@ -9,7 +9,6 @@ from dotenv.main import load_dotenv
 
 load_dotenv()
 
-
 keywords = open('keywords.csv', 'r').readlines()
 
 
@@ -19,8 +18,8 @@ try:
         client_id = os.environ['client'],
         client_secret = os.environ['secret'],
         password = os.environ['pw'],
-        user_agent = os.environ['user'] + " by u/JBiddyB",
-        username = "JBiddyB"
+        user_agent = os.environ['user'] + " by u/tuo13325",
+        username = "tuo13325"
     )
 except ConnectionError() as e:
     print("Error connecting")
@@ -28,8 +27,7 @@ except ConnectionError() as e:
 
 if REDDIT:
     source = REDDIT.subreddit('antiwork').new(limit = 10000)
-    posts = {}
-    
+    posts = {}   
 
 # create a data structure for each post returned
     data = {
