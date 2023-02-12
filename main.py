@@ -49,9 +49,9 @@ if REDDIT:
                 data['Title'].append(post.title)
                 data['Body'].append(post.selftext)
                 data['Posted'].append(datetime.datetime.fromtimestamp(post.created_utc))
-            if len(posts) == 10:
+            if len(posts) == 1000:
                 break
-        if len(posts) == 10:
+        if len(posts) == 1000:
             break
 # since the REDDIT API only allows 60 calls per minute, we sleep
         time.sleep(1)
@@ -59,7 +59,7 @@ if REDDIT:
 # use pandas to create a dataframe of the information to be used for exporting to a csv
 # the csv is created, keeping the index True to make sorting easier
     df = pd.DataFrame(data)
-    df.to_csv('results.csv', index = True)
+    df.to_csv('results3.csv', index = True)
 
 # Since the code will take a long time to run,
 # the print statement is a simple method of letting me
@@ -69,5 +69,3 @@ if REDDIT:
     print("Done")
 else:
     print("Connection problems. Please try again later")
-
-
