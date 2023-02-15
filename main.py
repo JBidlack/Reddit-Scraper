@@ -31,6 +31,7 @@ if REDDIT:
 
 # create a data structure for each post returned
     data = {
+        'Keyword': [],
         'Title': [],
         'Body': [],
         'Posted': [],
@@ -45,6 +46,7 @@ if REDDIT:
             if (keyword in post.title.lower() or keyword
             in post.selftext.lower()) and post.id not in posts:
                 posts[post.id] = post
+                data['Keyword'].append(keyword)
                 data['Title'].append(post.title)
                 data['Body'].append(post.selftext)
                 data['Posted'].append(datetime.datetime.fromtimestamp(post.created_utc))
@@ -59,7 +61,7 @@ if REDDIT:
 # use pandas to create a dataframe of the information to be used for exporting to a csv
 # the csv is created, keeping the index True to make sorting easier
     df = pd.DataFrame(data)
-    df.to_csv('results3.csv', index = True)
+    df.to_csv('results4.csv', index = True)
 
 # Since the code will take a long time to run,
 # the print statement is a simple method of letting me
