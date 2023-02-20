@@ -33,7 +33,8 @@ if REDDIT:
     data = {
         'Title': [],
         'Body': [],
-        'Posted': []
+        'Posted': [],
+        'Shortlink': []
         }
     COUNT = 0
 # use a nested for loop to check each post title for the keywords
@@ -47,6 +48,7 @@ if REDDIT:
                 data['Title'].append(post.title)
                 data['Body'].append(post.selftext)
                 data['Posted'].append(datetime.datetime.fromtimestamp(post.created_utc))
+                data['Shortlink'].append(post.shortlink)
             if len(posts) == 1000:
                 break
         if len(posts) == 1000:
@@ -57,7 +59,7 @@ if REDDIT:
 # use pandas to create a dataframe of the information to be used for exporting to a csv
 # the csv is created, keeping the index True to make sorting easier
     df = pd.DataFrame(data)
-    df.to_csv('results3.csv', index = True)
+    df.to_csv('results6.csv', index = True)
 
 # Since the code will take a long time to run,
 # the print statement is a simple method of letting me
